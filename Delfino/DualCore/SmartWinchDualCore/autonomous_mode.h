@@ -9,7 +9,7 @@
 #define AUTONOMOUS_MODE_H_
 
 #include "includes.h"
-
+//vlad is git
 void waypoint_follower();
 
 #endif /* AUTONOMOUS_MODE_H_ */
