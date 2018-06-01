@@ -2,7 +2,7 @@
  * kinematics.c
  *
  *  Created on: 14 Feb 2018
- *      Author: [Afdhal Atiff Tan] + [Matthew Danby]
+ *      Author: [Afdhal Atiff Tan] + [Matthew Danby] h
  */
 
 
