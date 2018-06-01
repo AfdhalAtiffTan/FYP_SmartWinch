@@ -129,28 +129,6 @@ enum
     kinematics_test_B,
     kinematics_test_C,
     kinematics_test_D,
-    
-    //Motor coodinates. Coordinates defined so positive and used to calculate
-    //distance in maths section
-    motaxmm,
-    motaymm,
-    motbxmm,
-    motbymm,
-    motcxmm,
-    motcymm,
-    motdxmm,
-    motdymm,
-    
-    //Distance between motors
-    len_ab,
-    len_cd,
-    len_ad,
-    len_ac,
-    len_bd,
-    
-    //Weight of cable in N/mm
-    w,
-        
 
     modbus_master_test,
 
