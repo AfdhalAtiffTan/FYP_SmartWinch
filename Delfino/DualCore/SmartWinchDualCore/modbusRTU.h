@@ -71,7 +71,8 @@
  * 	an exception code (1 to 4) in case of a modbus exceptions
  * 	the number of bytes sent as reply ( > 4) if OK.
  */
-  int modbusRTU_Update(unsigned char slave_id, int *regs, unsigned int regs_size); 
+  int modbusRTU_Update(unsigned char slave_id, int *regs, unsigned int regs_size); //lora
+  int modbusRTU_Update_2(unsigned char slave_id, int *regs, unsigned int regs_size); //wifi
 
   //used to init all flags to zero
   void modbusRTU_init();

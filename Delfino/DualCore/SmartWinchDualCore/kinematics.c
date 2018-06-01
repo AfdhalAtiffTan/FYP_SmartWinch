@@ -616,7 +616,7 @@ length4_struct coord2ten_sag(float x, float y, float z,float distance,float comb
 
 
 unsigned int total_path_points;
-XYZ_coord_struct_int generated_path[1024];
+XYZ_coord_struct_int generated_path[16]; //was 1024
 
 unsigned int max(unsigned int a, unsigned int b, unsigned int c)
 {
@@ -631,46 +631,69 @@ unsigned int max(unsigned int a, unsigned int b, unsigned int c)
 //this function will update global scaled_speed by using the ratio of cable lengths
 //this is so that all winch will finish actuating the tether at around the same time
 void update_scaled_velocity(float length1, float length2,float length3,float length4)
-{
+{   
+    static uint32_t old_cable_lengths[4];
+
     if (dip_switch.BIT4) //this is used to skip scaled velocity
     {
         modbus_holding_regs[scaled_velocity] = modbus_holding_regs[Max_Velocity];
         return;
     }
 
-    float longest_cable = length1;
+    // final - initial
+    float delta_lengths[4];    
+    delta_lengths[0] = fabs(length1 - (float) ((uint32_t) old_cable_lengths[0]));
+    delta_lengths[1] = fabs(length2 - (float) ((uint32_t) old_cable_lengths[1]));
+    delta_lengths[2] = fabs(length3 - (float) ((uint32_t) old_cable_lengths[2]));
+    delta_lengths[3] = fabs(length4 - (float) ((uint32_t) old_cable_lengths[3]));
 
-    if(longest_cable < length2)
-        longest_cable = length2;
-    if(longest_cable < length3)
-        longest_cable = length3;
-    if(longest_cable < length4)
-        longest_cable = length4;
 
-    //todo: this section can be simplified using an array
-    switch(modbus_holding_regs[Winch_ID])
-    {
-        case 0:
-        {
-            modbus_holding_regs[scaled_velocity] = (int)((float)modbus_holding_regs[Max_Velocity]*length1/longest_cable);
-            break;
-        }
-        case 1:
-        {
-            modbus_holding_regs[scaled_velocity] = (int)((float)modbus_holding_regs[Max_Velocity]*length2/longest_cable);
-            break;
-        }
-        case 2:
-        {
-            modbus_holding_regs[scaled_velocity] = (int)((float)modbus_holding_regs[Max_Velocity]*length3/longest_cable);
-            break;
-        }
-        case 3:
-        {
-            modbus_holding_regs[scaled_velocity] = (int)((float)modbus_holding_regs[Max_Velocity]*length4/longest_cable);
-            break;
-        }
-    }     
+    //find the longest delta
+    //credit: vlad
+    float longest_cable = delta_lengths[0];
+    if(longest_cable < delta_lengths[1])
+        longest_cable = delta_lengths[1];
+    if(longest_cable < delta_lengths[2])
+        longest_cable = delta_lengths[2];
+    if(longest_cable < delta_lengths[3])
+        longest_cable = delta_lengths[3];
+    
+    modbus_holding_regs[scaled_velocity] = (int)((float)modbus_holding_regs[Max_Velocity]*delta_lengths[modbus_holding_regs[Winch_ID]]/longest_cable);
+
+    // //todo: this section can be simplified using an array
+    // switch(modbus_holding_regs[Winch_ID])
+    // {
+    //     case 0:
+    //     {
+    //         modbus_holding_regs[scaled_velocity] = (int)((float)modbus_holding_regs[Max_Velocity]*delta_lengths[0]/longest_cable);
+    //         break;
+    //     }
+    //     case 1:
+    //     {
+    //         modbus_holding_regs[scaled_velocity] = (int)((float)modbus_holding_regs[Max_Velocity]*delta_lengths[1]/longest_cable);
+    //         break;
+    //     }
+    //     case 2:
+    //     {
+    //         modbus_holding_regs[scaled_velocity] = (int)((float)modbus_holding_regs[Max_Velocity]*delta_lengths[2]/longest_cable);
+    //         break;
+    //     }
+    //     case 3:
+    //     {
+    //         modbus_holding_regs[scaled_velocity] = (int)((float)modbus_holding_regs[Max_Velocity]*delta_lengths[3]/longest_cable);
+    //         break;
+    //     }
+    // }
+
+    //if division by 0 occur
+    if (modbus_holding_regs[scaled_velocity] > modbus_holding_regs[Max_Velocity])
+        modbus_holding_regs[scaled_velocity] = modbus_holding_regs[Max_Velocity];
+
+    //store the initial lengths for future use
+    old_cable_lengths[0] = (uint32_t) modbus_holding_regs[Target_Length_Winch0];     
+    old_cable_lengths[1] = (uint32_t) modbus_holding_regs[Target_Length_Winch1];
+    old_cable_lengths[2] = (uint32_t) modbus_holding_regs[Target_Length_Winch2];
+    old_cable_lengths[3] = (uint32_t) modbus_holding_regs[Target_Length_Winch3];
 }
 
 

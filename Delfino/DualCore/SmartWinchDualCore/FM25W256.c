@@ -49,22 +49,32 @@
 //this is needed because of ti's spi api
 uint16_t left_justified(uint16_t data)
 {
-    return data<<8;
+    return (data&8)<<8;
 }
 
-//todo: add int version of read/write
 void FM25W256_write(uint16_t address, uint16_t data)
 {
-    SPI_resetRxFIFO (SPIB_BASE); // _cs = 0;
-    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(CMD_WREN));
-    while(SPI_isBusy (SPIB_BASE)); // _cs = 1;
+    //SPI_resetRxFIFO (SPIB_BASE); 
 
-    SPI_resetRxFIFO (SPIB_BASE); // _cs = 0;
-    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(CMD_WRITE));
-    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(address >> 8));
-    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(address & 0xFF));
-    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(data));
-    while(SPI_isBusy (SPIB_BASE)); // _cs = 1;
+    GPIO_writePin(DEVICE_GPIO_PIN_SPISTEB, 0);
+    DEVICE_DELAY_US(1);
+    SPI_writeDataBlockingNonFIFO(SPIB_BASE, left_justified(CMD_WREN));             SPI_readDataBlockingNonFIFO(SPIB_BASE);
+    while(SPI_isBusy (SPIB_BASE));
+    DEVICE_DELAY_US(1);
+    GPIO_writePin(DEVICE_GPIO_PIN_SPISTEB, 1);    
+
+    GPIO_writePin(DEVICE_GPIO_PIN_SPISTEB, 0);
+    DEVICE_DELAY_US(1);
+    SPI_writeDataBlockingNonFIFO(SPIB_BASE, left_justified(CMD_WRITE));            SPI_readDataBlockingNonFIFO(SPIB_BASE);
+    SPI_writeDataBlockingNonFIFO(SPIB_BASE, left_justified((address*2) >> 8));     SPI_readDataBlockingNonFIFO(SPIB_BASE);
+    SPI_writeDataBlockingNonFIFO(SPIB_BASE, left_justified((address*2) & 0xFF));   SPI_readDataBlockingNonFIFO(SPIB_BASE);
+    SPI_writeDataBlockingNonFIFO(SPIB_BASE, left_justified(data >> 8));            SPI_readDataBlockingNonFIFO(SPIB_BASE);
+    SPI_writeDataBlockingNonFIFO(SPIB_BASE, left_justified(data & 0xFF));          SPI_readDataBlockingNonFIFO(SPIB_BASE);
+    while(SPI_isBusy (SPIB_BASE));
+    DEVICE_DELAY_US(1);
+    GPIO_writePin(DEVICE_GPIO_PIN_SPISTEB, 1);
+    
+    //SPI_resetRxFIFO (SPIB_BASE); 
 }
 
 void FM25W256_write_multiple(uint16_t address, uint16_t *data, uint16_t size)
@@ -87,16 +97,30 @@ uint16_t FM25W256_read(uint16_t address)
 {
     uint16_t data;
 
-    SPI_resetRxFIFO (SPIB_BASE); // _cs = 0;
-    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(CMD_READ));
-    data = SPI_readDataBlockingFIFO(SPIB_BASE);
-    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(address >> 8));
-    data = SPI_readDataBlockingFIFO(SPIB_BASE);
-    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(address & 0xFF));
-    data = SPI_readDataBlockingFIFO(SPIB_BASE);
-    SPI_writeDataBlockingFIFO(SPIB_BASE, 0x00); //read first byte
-    data = SPI_readDataBlockingFIFO(SPIB_BASE);
-    while(SPI_isBusy (SPIB_BASE)); // _cs = 1;
+    //SPI_resetRxFIFO (SPIB_BASE);
+
+    GPIO_writePin(DEVICE_GPIO_PIN_SPISTEB, 0);
+    DEVICE_DELAY_US(1);
+    SPI_writeDataBlockingNonFIFO(SPIB_BASE, left_justified(CMD_READ));                 SPI_readDataBlockingNonFIFO(SPIB_BASE);
+    SPI_writeDataBlockingNonFIFO(SPIB_BASE, left_justified((address*2) >> 8));         SPI_readDataBlockingNonFIFO(SPIB_BASE);
+    SPI_writeDataBlockingNonFIFO(SPIB_BASE, left_justified((address*2) & 0xFF));       SPI_readDataBlockingNonFIFO(SPIB_BASE);
+    SPI_writeDataBlockingNonFIFO(SPIB_BASE, 0x00); //read msb   
+    data = SPI_readDataBlockingNonFIFO(SPIB_BASE) << 8;
+    SPI_writeDataBlockingNonFIFO(SPIB_BASE, 0x00); //read lsb
+    data |= SPI_readDataBlockingNonFIFO(SPIB_BASE);
+    SPI_writeDataBlockingNonFIFO(SPIB_BASE, 0x00); //dummy 
+    //while(SPI_isBusy (SPIB_BASE));
+    DEVICE_DELAY_US(1);
+    GPIO_writePin(DEVICE_GPIO_PIN_SPISTEB, 1);
+
+    // data = SPI_readDataBlockingNonFIFO(SPIB_BASE);
+    // data = SPI_readDataBlockingFIFO(SPIB_BASE);
+    // data = SPI_readDataBlockingFIFO(SPIB_BASE);
+
+    // data = SPI_readDataBlockingFIFO(SPIB_BASE) << 8;
+    // data |= SPI_readDataBlockingFIFO(SPIB_BASE);
+
+    //SPI_resetRxFIFO (SPIB_BASE);
 
     return data;
 }

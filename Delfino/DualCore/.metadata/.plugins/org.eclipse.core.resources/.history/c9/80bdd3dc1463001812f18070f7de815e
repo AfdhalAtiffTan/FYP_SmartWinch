@@ -1,0 +1,50 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+SHELL = cmd.exe
+
+# Add inputs and outputs from these tool invocations to the build variables 
+ASM_SRCS += \
+../DCL/source/DCL_DF13.asm \
+../DCL/source/DCL_DF22.asm \
+../DCL/source/DCL_DF23.asm \
+../DCL/source/DCL_PI.asm \
+../DCL/source/DCL_PID.asm 
+
+OBJS += \
+./DCL/source/DCL_DF13.obj \
+./DCL/source/DCL_DF22.obj \
+./DCL/source/DCL_DF23.obj \
+./DCL/source/DCL_PI.obj \
+./DCL/source/DCL_PID.obj 
+
+ASM_DEPS += \
+./DCL/source/DCL_DF13.d \
+./DCL/source/DCL_DF22.d \
+./DCL/source/DCL_DF23.d \
+./DCL/source/DCL_PI.d \
+./DCL/source/DCL_PID.d 
+
+OBJS__QUOTED += \
+"DCL\source\DCL_DF13.obj" \
+"DCL\source\DCL_DF22.obj" \
+"DCL\source\DCL_DF23.obj" \
+"DCL\source\DCL_PI.obj" \
+"DCL\source\DCL_PID.obj" 
+
+ASM_DEPS__QUOTED += \
+"DCL\source\DCL_DF13.d" \
+"DCL\source\DCL_DF22.d" \
+"DCL\source\DCL_DF23.d" \
+"DCL\source\DCL_PI.d" \
+"DCL\source\DCL_PID.d" 
+
+ASM_SRCS__QUOTED += \
+"../DCL/source/DCL_DF13.asm" \
+"../DCL/source/DCL_DF22.asm" \
+"../DCL/source/DCL_DF23.asm" \
+"../DCL/source/DCL_PI.asm" \
+"../DCL/source/DCL_PID.asm" 
+
+

@@ -8,55 +8,75 @@
 "C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="autonomous_mode.d_raw"  "../autonomous_mode.c"
 'Finished building: "../autonomous_mode.c"'
  
-'Building file: "../MotionProfile.c"'
-'Invoking: C2000 Compiler'
-"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="MotionProfile.d_raw"  "../MotionProfile.c"
-'Finished building: "../MotionProfile.c"'
- 
-'Building file: "../FM25W256.c"'
-'Invoking: C2000 Compiler'
-"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="FM25W256.d_raw"  "../FM25W256.c"
-'Finished building: "../FM25W256.c"'
- 
 'Building file: "../buffered_serial.c"'
 'Invoking: C2000 Compiler'
 "C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="buffered_serial.d_raw"  "../buffered_serial.c"
 'Finished building: "../buffered_serial.c"'
  
-'Building file: "../buffered_serial_C.c"'
+'Building file: "../MotionProfile.c"'
 'Invoking: C2000 Compiler'
-"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="buffered_serial_C.d_raw"  "../buffered_serial_C.c"
-'Finished building: "../buffered_serial_C.c"'
+"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="MotionProfile.d_raw"  "../MotionProfile.c"
+'Finished building: "../MotionProfile.c"'
  
 'Building file: "../buffered_serial_B.c"'
 'Invoking: C2000 Compiler'
 "C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="buffered_serial_B.d_raw"  "../buffered_serial_B.c"
 'Finished building: "../buffered_serial_B.c"'
  
+'Building file: "../FM25W256.c"'
+'Invoking: C2000 Compiler'
+"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="FM25W256.d_raw"  "../FM25W256.c"
+'Finished building: "../FM25W256.c"'
+ 
+'Building file: "../buffered_serial_C.c"'
+'Invoking: C2000 Compiler'
+"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="buffered_serial_C.d_raw"  "../buffered_serial_C.c"
+'Finished building: "../buffered_serial_C.c"'
+ 
 'Building file: "../ModbusMaster.c"'
 'Invoking: C2000 Compiler'
 "C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="ModbusMaster.d_raw"  "../ModbusMaster.c"
 'Finished building: "../ModbusMaster.c"'
+ 
+'Building file: "../buffered_serial_D.c"'
+'Invoking: C2000 Compiler'
+"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="buffered_serial_D.d_raw"  "../buffered_serial_D.c"
+'Finished building: "../buffered_serial_D.c"'
  
 'Building file: "../interwinch_comms.c"'
 'Invoking: C2000 Compiler'
 "C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="interwinch_comms.d_raw"  "../interwinch_comms.c"
 'Finished building: "../interwinch_comms.c"'
  
-'Building file: "../modbus_regs.c"'
+'Building file: "../main.c"'
 'Invoking: C2000 Compiler'
-"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="modbus_regs.d_raw"  "../modbus_regs.c"
-'Finished building: "../modbus_regs.c"'
+"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="main.d_raw"  "../main.c"
+'Finished building: "../main.c"'
  
 'Building file: "../interrupt_handlers.c"'
 'Invoking: C2000 Compiler'
 "C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="interrupt_handlers.d_raw"  "../interrupt_handlers.c"
 'Finished building: "../interrupt_handlers.c"'
  
-'Building file: "../main.c"'
+'Building file: "../modbus_regs.c"'
 'Invoking: C2000 Compiler'
-"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="main.d_raw"  "../main.c"
-'Finished building: "../main.c"'
+"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="modbus_regs.d_raw"  "../modbus_regs.c"
+'Finished building: "../modbus_regs.c"'
+ 
+'Building file: "../motor_driver.c"'
+'Invoking: C2000 Compiler'
+"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="motor_driver.d_raw"  "../motor_driver.c"
+'Finished building: "../motor_driver.c"'
+ 
+'Building file: "../motion_buffer.c"'
+'Invoking: C2000 Compiler'
+"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="motion_buffer.d_raw"  "../motion_buffer.c"
+'Finished building: "../motion_buffer.c"'
+ 
+'Building file: "../safety_routines.c"'
+'Invoking: C2000 Compiler'
+"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="safety_routines.d_raw"  "../safety_routines.c"
+'Finished building: "../safety_routines.c"'
  
 'Building file: "../modbusRTU.c"'
 'Invoking: C2000 Compiler'
@@ -68,25 +88,10 @@
 "C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="DCL/source/DCL_DF13.d_raw" --obj_directory="DCL/source"  "../DCL/source/DCL_DF13.asm"
 'Finished building: "../DCL/source/DCL_DF13.asm"'
  
-'Building file: "../motion_buffer.c"'
-'Invoking: C2000 Compiler'
-"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="motion_buffer.d_raw"  "../motion_buffer.c"
-'Finished building: "../motion_buffer.c"'
- 
-'Building file: "../motor_driver.c"'
-'Invoking: C2000 Compiler'
-"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="motor_driver.d_raw"  "../motor_driver.c"
-'Finished building: "../motor_driver.c"'
- 
 'Building file: "../DCL/source/DCL_DF22.asm"'
 'Invoking: C2000 Compiler'
 "C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="DCL/source/DCL_DF22.d_raw" --obj_directory="DCL/source"  "../DCL/source/DCL_DF22.asm"
 'Finished building: "../DCL/source/DCL_DF22.asm"'
- 
-'Building file: "../safety_routines.c"'
-'Invoking: C2000 Compiler'
-"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="safety_routines.d_raw"  "../safety_routines.c"
-'Finished building: "../safety_routines.c"'
  
 'Building file: "../DCL/source/DCL_DF23.asm"'
 'Invoking: C2000 Compiler'
@@ -98,6 +103,11 @@
 "C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="DCL/source/DCL_PI.d_raw" --obj_directory="DCL/source"  "../DCL/source/DCL_PI.asm"
 'Finished building: "../DCL/source/DCL_PI.asm"'
  
+'Building file: "../device_init.c"'
+'Invoking: C2000 Compiler'
+"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="device_init.d_raw"  "../device_init.c"
+'Finished building: "../device_init.c"'
+ 
 'Building file: "../DCL/source/DCL_PID.asm"'
 'Invoking: C2000 Compiler'
 "C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="DCL/source/DCL_PID.d_raw" --obj_directory="DCL/source"  "../DCL/source/DCL_PID.asm"
@@ -107,11 +117,6 @@
 'Invoking: C2000 Compiler'
 "C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="device/F2837xD_CodeStartBranch.d_raw" --obj_directory="device"  "../device/F2837xD_CodeStartBranch.asm"
 'Finished building: "../device/F2837xD_CodeStartBranch.asm"'
- 
-'Building file: "../device_init.c"'
-'Invoking: C2000 Compiler'
-"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore" --include_path="D:/AcademicRelated/Y4S1/FYP/Codes/Delfino/DualCore/SmartWinchDualCore/device" --include_path="C:/ti/c2000/C2000Ware_1_00_03_00/driverlib/f2837xd/driverlib" --include_path="C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number --preproc_with_compile --preproc_dependency="device_init.d_raw"  "../device_init.c"
-'Finished building: "../device_init.c"'
  
 'Building file: "../RoboClaw.c"'
 'Invoking: C2000 Compiler'
@@ -135,7 +140,7 @@
  
 'Building target: "SmartWinchDualCore.out"'
 'Invoking: C2000 Linker'
-"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number -z -m"SmartWinchDualCore.map" --heap_size=0x400 --stack_size=0x100 --warn_sections -i"C:/ti/c2000/C2000Ware_1_00_03_00/device_support/f2837xd/headers/cmd" -i"C:/ti/c2000/C2000Ware_1_00_03_00/device_support/f2837xd/common/cmd" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/lib" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --reread_libs --diag_wrap=off --display_error_number --xml_link_info="SmartWinchDualCore_linkInfo.xml" --entry_point=code_start --rom_model -o "SmartWinchDualCore.out" "./FM25W256.obj" "./ModbusMaster.obj" "./MotionProfile.obj" "./RoboClaw.obj" "./autonomous_mode.obj" "./buffered_serial.obj" "./buffered_serial_B.obj" "./buffered_serial_C.obj" "./device_init.obj" "./interrupt_handlers.obj" "./interwinch_comms.obj" "./kinematics.obj" "./main.obj" "./modbusRTU.obj" "./modbus_regs.obj" "./motion_buffer.obj" "./motor_driver.obj" "./safety_routines.obj" "./task_scheduler.obj" "./DCL/source/DCL_DF13.obj" "./DCL/source/DCL_DF22.obj" "./DCL/source/DCL_DF23.obj" "./DCL/source/DCL_PI.obj" "./DCL/source/DCL_PID.obj" "./device/F2837xD_CodeStartBranch.obj" "./device/device.obj" "../2837xD_FLASH_lnk_cpu1.cmd" "../driverlib.lib"  -l"C:/ti/c2000/C2000Ware_1_00_03_00/device_support/f2837xd/headers/cmd/F2837xD_Headers_nonBIOS_cpu1.cmd" -lrts2800_fpu32.lib 
+"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla1 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu2 -Ooff --opt_for_speed=5 --fp_mode=relaxed --advice:performance=all --define=_FLASH --define=CPU1 --diag_suppress=10063 --diag_warning=225 --diag_wrap=off --display_error_number -z -m"SmartWinchDualCore.map" --heap_size=0x400 --stack_size=0x100 --warn_sections -i"C:/ti/c2000/C2000Ware_1_00_03_00/device_support/f2837xd/headers/cmd" -i"C:/ti/c2000/C2000Ware_1_00_03_00/device_support/f2837xd/common/cmd" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/lib" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include" --reread_libs --diag_wrap=off --display_error_number --xml_link_info="SmartWinchDualCore_linkInfo.xml" --entry_point=code_start --rom_model -o "SmartWinchDualCore.out" "./FM25W256.obj" "./ModbusMaster.obj" "./MotionProfile.obj" "./RoboClaw.obj" "./autonomous_mode.obj" "./buffered_serial.obj" "./buffered_serial_B.obj" "./buffered_serial_C.obj" "./buffered_serial_D.obj" "./device_init.obj" "./interrupt_handlers.obj" "./interwinch_comms.obj" "./kinematics.obj" "./main.obj" "./modbusRTU.obj" "./modbus_regs.obj" "./motion_buffer.obj" "./motor_driver.obj" "./safety_routines.obj" "./task_scheduler.obj" "./DCL/source/DCL_DF13.obj" "./DCL/source/DCL_DF22.obj" "./DCL/source/DCL_DF23.obj" "./DCL/source/DCL_PI.obj" "./DCL/source/DCL_PID.obj" "./device/F2837xD_CodeStartBranch.obj" "./device/device.obj" "../2837xD_FLASH_lnk_cpu1.cmd" "../driverlib.lib"  -l"C:/ti/c2000/C2000Ware_1_00_03_00/device_support/f2837xd/headers/cmd/F2837xD_Headers_nonBIOS_cpu1.cmd" -lrts2800_fpu32.lib 
 <Linking>
 'Finished building target: "SmartWinchDualCore.out"'
  

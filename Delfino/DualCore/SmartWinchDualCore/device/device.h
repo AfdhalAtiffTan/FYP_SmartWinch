@@ -96,6 +96,14 @@ a single CPU should be defined."
 #define DEVICE_GPIO_CFG_SCITXDC     GPIO_56_SCITXDC // "pinConfig" for SCI TX
 
 //
+// SCID for interwinch WiFi
+//
+#define DEVICE_GPIO_PIN_SCIRXDD     105U             // GPIO number for SCI RX
+#define DEVICE_GPIO_PIN_SCITXDD     104U             // GPIO number for SCI TX
+#define DEVICE_GPIO_CFG_SCIRXDD     GPIO_105_SCIRXDD // "pinConfig" for SCI RX
+#define DEVICE_GPIO_CFG_SCITXDD     GPIO_104_SCITXDD // "pinConfig" for SCI TX
+
+//
 // CANA
 //
 #define DEVICE_GPIO_PIN_CANTXA      31U  // GPIO number for CANTXA
@@ -175,7 +183,7 @@ a single CPU should be defined."
 #define DEVICE_GPIO_CFG_SPISOMIB    GPIO_64_SPISOMIB  
 #define DEVICE_GPIO_CFG_SPICLKB     GPIO_65_SPICLKB  
 #define DEVICE_GPIO_CFG_SPISTEB     GPIO_66_SPISTEB  
-
+//#define DEVICE_GPIO_CFG_SPISTEB     GPIO_66_GPIO66
 
 //
 // Emergency Stop Switch

@@ -90,6 +90,7 @@ MotionProfile.obj: ../modbusRTU.h
 MotionProfile.obj: ../modbus_regs.h
 MotionProfile.obj: ../buffered_serial.h
 MotionProfile.obj: ../buffered_serial_B.h
+MotionProfile.obj: ../buffered_serial_D.h
 MotionProfile.obj: ../MotionProfile.h
 MotionProfile.obj: ../kinematics.h
 MotionProfile.obj: ../motion_buffer.h
@@ -192,6 +193,7 @@ C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include/stddef.h:
 ../modbus_regs.h: 
 ../buffered_serial.h: 
 ../buffered_serial_B.h: 
+../buffered_serial_D.h: 
 ../MotionProfile.h: 
 ../kinematics.h: 
 ../motion_buffer.h: 

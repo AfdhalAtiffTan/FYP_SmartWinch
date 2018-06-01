@@ -106,3 +106,6 @@
 -added interwinch comms
 -imported fram library
 -added local git
+
+1st June 2018
+-rev2 of the scaled_velocity

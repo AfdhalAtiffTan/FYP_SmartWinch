@@ -90,6 +90,7 @@ motor_driver.obj: ../modbusRTU.h
 motor_driver.obj: ../modbus_regs.h
 motor_driver.obj: ../buffered_serial.h
 motor_driver.obj: ../buffered_serial_B.h
+motor_driver.obj: ../buffered_serial_D.h
 motor_driver.obj: ../MotionProfile.h
 motor_driver.obj: ../kinematics.h
 motor_driver.obj: ../motion_buffer.h
@@ -192,6 +193,7 @@ C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include/stddef.h:
 ../modbus_regs.h: 
 ../buffered_serial.h: 
 ../buffered_serial_B.h: 
+../buffered_serial_D.h: 
 ../MotionProfile.h: 
 ../kinematics.h: 
 ../motion_buffer.h: 

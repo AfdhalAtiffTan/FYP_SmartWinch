@@ -7,7 +7,7 @@
 
 #include "interwinch_comms.h"
 
-uint32_t polling_time = 5000; //5000x200us = 1second 
+uint32_t polling_time; //5000x200us = 1second 
 
 //future: add independent safety flag
 void check_network_health()
@@ -35,7 +35,7 @@ void check_network_health()
     }
 
     //if no complete response received within specified time, set a flag
-    if(systick() - error_timestamp > (polling_time*8))
+    if(systick() - error_timestamp > (polling_time*30))
         modbus_holding_regs[network_error] = 1;    
     else
         modbus_holding_regs[network_error] = 0;
@@ -45,14 +45,38 @@ void check_network_health()
 //future: add sync flag
 void broadcast_status()
 {
-    ModbusMaster_setTransmitBuffer(0, 1);
-    ModbusMaster_writeMultipleRegisters(sync, 1);
+    // static unsigned char broadcast_turn = 0;
+
+    if(modbus_holding_regs[Winch_ID]==0)
+    {
+        ModbusMaster_setTransmitBuffer(0, 1);
+        ModbusMaster_writeMultipleRegisters(sync, 1);
+    }
 
     ModbusMaster_setTransmitBuffer(0, modbus_holding_regs[Current_Length_Winch0 + modbus_holding_regs[Winch_ID]]);
     ModbusMaster_writeMultipleRegisters((Current_Length_Winch0 + modbus_holding_regs[Winch_ID]), 1);
 
     ModbusMaster_setTransmitBuffer(0, modbus_holding_regs[Current_Force_Winch0 + modbus_holding_regs[Winch_ID]]);
-    ModbusMaster_writeMultipleRegisters((Current_Force_Winch0 + modbus_holding_regs[Winch_ID]), 1);    
+    ModbusMaster_writeMultipleRegisters((Current_Force_Winch0 + modbus_holding_regs[Winch_ID]), 1);  
+
+    // switch (broadcast_turn)
+    // {
+    //     case 0:
+    //     {
+    //         ModbusMaster_setTransmitBuffer(0, modbus_holding_regs[Current_Length_Winch0 + modbus_holding_regs[Winch_ID]]);
+    //         ModbusMaster_writeMultipleRegisters((Current_Length_Winch0 + modbus_holding_regs[Winch_ID]), 1);
+    //         break;
+    //     }
+    //     case 1:
+    //     {
+    //         ModbusMaster_setTransmitBuffer(0, modbus_holding_regs[Current_Force_Winch0 + modbus_holding_regs[Winch_ID]]);
+    //         ModbusMaster_writeMultipleRegisters((Current_Force_Winch0 + modbus_holding_regs[Winch_ID]), 1);  
+    //         break;
+    //     }
+    // }
+    
+    // broadcast_turn += 1; //go to next turn 
+    // broadcast_turn %= 2; //only to packets to be shared
 }
 
 void master_winch_comms()
@@ -92,10 +116,15 @@ void slave_winch_comms()
 
 void interwinch_comms_handler()
 {
-    if(modbus_holding_regs[Winch_ID] == 0)
-        master_winch_comms();
-    else
-        slave_winch_comms();
+    if(modbus_holding_regs[interwinch_comms])
+    {
+        polling_time = modbus_holding_regs[wifi_polling_time];
+        
+        if(modbus_holding_regs[Winch_ID] == 0)
+            master_winch_comms();
+        else
+            slave_winch_comms();
 
-    check_network_health();
+        check_network_health();
+    }    
 }

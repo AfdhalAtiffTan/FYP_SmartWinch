@@ -139,6 +139,8 @@ enum
     sync,
     network_error,
 
+    wifi_polling_time,
+
 
     //start of waypoints
     X1,

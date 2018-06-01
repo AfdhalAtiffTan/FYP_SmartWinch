@@ -2280,3 +2280,75 @@ Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.
 
 !ENTRY com.ti.common.core 4 0 2018-05-25 05:50:14.518
 !MESSAGE debugServerDir=C:/ti/ccsv7/ccs_base/DebugServer
+!SESSION 2018-05-29 05:44:58.329 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_112
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_GB
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 4 0 2018-05-29 05:45:09.555
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 4 0 2018-05-29 05:45:09.575
+!MESSAGE debugServerDir=C:/ti/ccsv7/ccs_base/DebugServer
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-05-29 07:59:09.085
+!MESSAGE DS_ERROR: IcePick_C_0: Error connecting to the target: (Error -151 @ 0x0) One of the FTDI driver functions used during the connect returned bad status or an error. The cause may be one or more of: no XDS100 is plugged in, invalid XDS100 serial number, blank XDS100 EEPROM, missing FTDI drivers, faulty USB cable. Use the xds100serial command-line utility in the 'common/uscif' folder to verify the XDS100 can be located. (Emulation package 7.0.188.0) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-05-29 07:59:09.395
+!MESSAGE DS_ERROR: Error connecting to the target:
+(Error -151 @ 0x0)
+One of the FTDI driver functions used during the connect
+returned bad status or an error. The cause may be one or
+more of: no XDS100 is plugged in, invalid XDS100 serial number,
+blank XDS100 EEPROM, missing FTDI drivers, faulty USB cable.
+Use the xds100serial command-line utility in the 'common/uscif'
+folder to verify the XDS100 can be located.
+(Emulation package 7.0.188.0)
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-05-29 08:08:53.155
+!MESSAGE DS_ERROR: C28xx_CPU1: GEL: Encountered a problem loading file: D:\AcademicRelated\Y4S1\FYP\Codes\Delfino\DualCore\SmartWinchDualCore\CPU1_FLASH\SmartWinchDualCore.out Could not open file
+
+!SESSION 2018-05-29 14:59:58.773 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_112
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_GB
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 4 0 2018-05-29 15:00:27.890
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 4 0 2018-05-29 15:00:27.897
+!MESSAGE debugServerDir=C:/ti/ccsv7/ccs_base/DebugServer
+!SESSION 2018-05-31 09:45:20.685 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_112
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_GB
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 4 0 2018-05-31 09:45:25.752
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 4 0 2018-05-31 09:45:25.758
+!MESSAGE debugServerDir=C:/ti/ccsv7/ccs_base/DebugServer
+!SESSION 2018-06-01 03:38:51.070 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_112
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_GB
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 4 0 2018-06-01 03:38:56.021
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 4 0 2018-06-01 03:38:56.035
+!MESSAGE debugServerDir=C:/ti/ccsv7/ccs_base/DebugServer

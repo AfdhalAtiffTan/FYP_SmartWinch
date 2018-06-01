@@ -90,6 +90,7 @@ motion_buffer.obj: ../modbusRTU.h
 motion_buffer.obj: ../modbus_regs.h
 motion_buffer.obj: ../buffered_serial.h
 motion_buffer.obj: ../buffered_serial_B.h
+motion_buffer.obj: ../buffered_serial_D.h
 motion_buffer.obj: ../MotionProfile.h
 motion_buffer.obj: ../kinematics.h
 motion_buffer.obj: ../motion_buffer.h
@@ -192,6 +193,7 @@ C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include/stddef.h:
 ../modbus_regs.h: 
 ../buffered_serial.h: 
 ../buffered_serial_B.h: 
+../buffered_serial_D.h: 
 ../MotionProfile.h: 
 ../kinematics.h: 
 ../motion_buffer.h: 

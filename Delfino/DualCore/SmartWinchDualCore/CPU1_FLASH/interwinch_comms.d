@@ -90,6 +90,7 @@ interwinch_comms.obj: ../modbusRTU.h
 interwinch_comms.obj: ../modbus_regs.h
 interwinch_comms.obj: ../buffered_serial.h
 interwinch_comms.obj: ../buffered_serial_B.h
+interwinch_comms.obj: ../buffered_serial_D.h
 interwinch_comms.obj: ../MotionProfile.h
 interwinch_comms.obj: ../kinematics.h
 interwinch_comms.obj: ../motion_buffer.h
@@ -192,6 +193,7 @@ C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include/stddef.h:
 ../modbus_regs.h: 
 ../buffered_serial.h: 
 ../buffered_serial_B.h: 
+../buffered_serial_D.h: 
 ../MotionProfile.h: 
 ../kinematics.h: 
 ../motion_buffer.h: 

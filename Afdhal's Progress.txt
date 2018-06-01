@@ -382,3 +382,11 @@
 
 23rd May 2018
 -searching parts for power switch and front panel for antony
+
+29th May 2018
+-printed simple antenna bracket
+-received control panel parts from antony (thanks!)
+
+30th May 2018
+-printed simple control panel faceplate
+-revised control panel schematic

@@ -179,3 +179,36 @@ __interrupt void scicRXFIFOISR(void)
     //
     Interrupt_clearACKGroup(INTERRUPT_ACK_GROUP8);
 }
+
+
+//
+// scidTXFIFOISR - SCIC Transmit FIFO ISR
+//
+__interrupt void scidTXFIFOISR(void)
+{
+    buffered_serial_D_transmit();
+
+    SCI_clearInterruptStatus(SCID_BASE, SCI_INT_TXFF);
+
+    //
+    // Issue PIE ACK
+    //
+    Interrupt_clearACKGroup(INTERRUPT_ACK_GROUP8);
+}
+
+//
+// scidRXFIFOISR - SCIC Receive FIFO ISR
+//
+__interrupt void scidRXFIFOISR(void)
+{
+    buffered_serial_D_receive();
+
+    SCI_clearOverflowStatus(SCID_BASE);
+
+    SCI_clearInterruptStatus(SCID_BASE, SCI_INT_RXFF);
+
+    //
+    // Issue PIE ack
+    //
+    Interrupt_clearACKGroup(INTERRUPT_ACK_GROUP8);
+}

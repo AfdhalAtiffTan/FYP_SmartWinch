@@ -83,6 +83,7 @@ enum{
 
 // Modbus timeout [milliseconds]
 #define modbus_master_timeout 300
+#define modbus_master_broadcast_timeout 15
 uint16_t ku16MBResponseTimeout          = modbus_master_timeout; ///< Modbus timeout [milliseconds]
 
 // master function that conducts Modbus transactions
@@ -825,10 +826,10 @@ uint16_t ModbusMasterTransaction(uint16_t u8MBFunction)
   u8ModbusADU[u8ModbusADUSize] = 0;
 
   // flush receive buffer before transmitting request  
-  //while ((DEBUGGING ? buffered_serial_read() : buffered_serial_B_read()) != -1);
-  while ((DEBUGGING ? buffered_serial_available() : buffered_serial_B_available()))
+  //while ((DEBUGGING ? buffered_serial_read() : buffered_serial_D_read()) != -1);
+  while ((DEBUGGING ? buffered_serial_available() : buffered_serial_D_available()))
   {
-    (DEBUGGING ? buffered_serial_read() : buffered_serial_B_read());
+    (DEBUGGING ? buffered_serial_read() : buffered_serial_D_read());
   }
 
   // transmit request
@@ -838,11 +839,11 @@ uint16_t ModbusMasterTransaction(uint16_t u8MBFunction)
   }
   for (i = 0; i < u8ModbusADUSize; i++)
   {
-    (DEBUGGING ? buffered_serial_write(u8ModbusADU[i]) : buffered_serial_B_write(u8ModbusADU[i]));
+    (DEBUGGING ? buffered_serial_write(u8ModbusADU[i]) : buffered_serial_D_write(u8ModbusADU[i]));
   }
   
   u8ModbusADUSize = 0;
-  (DEBUGGING ? buffered_serial_flush() : buffered_serial_B_flush());   // flush transmit buffer
+  (DEBUGGING ? buffered_serial_flush() : buffered_serial_D_flush());   // flush transmit buffer
   if (_postTransmission)
   {
     _postTransmission();
@@ -852,12 +853,12 @@ uint16_t ModbusMasterTransaction(uint16_t u8MBFunction)
   u32StartTime = (systick()/5);
   while (u8BytesLeft && !u8MBStatus)
   {
-    if ((DEBUGGING ? buffered_serial_available() : buffered_serial_B_available()))
+    if ((DEBUGGING ? buffered_serial_available() : buffered_serial_D_available()))
     {
 #if __MODBUSMASTER_DEBUG__
       digitalWrite(__MODBUSMASTER_DEBUG_PIN_A__, true);
 #endif
-      u8ModbusADU[u8ModbusADUSize++] = (DEBUGGING ? buffered_serial_read() : buffered_serial_B_read());
+      u8ModbusADU[u8ModbusADUSize++] = (DEBUGGING ? buffered_serial_read() : buffered_serial_D_read());
       u8BytesLeft--;
 #if __MODBUSMASTER_DEBUG__
       digitalWrite(__MODBUSMASTER_DEBUG_PIN_A__, false);
@@ -926,7 +927,7 @@ uint16_t ModbusMasterTransaction(uint16_t u8MBFunction)
     }
 
     if(_u8MBSlave == 0)
-      ku16MBResponseTimeout = 1;
+      ku16MBResponseTimeout = modbus_master_broadcast_timeout;
     else
       ku16MBResponseTimeout = modbus_master_timeout;
 

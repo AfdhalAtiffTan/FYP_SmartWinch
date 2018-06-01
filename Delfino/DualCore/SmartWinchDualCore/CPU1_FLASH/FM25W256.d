@@ -90,6 +90,7 @@ FM25W256.obj: ../modbusRTU.h
 FM25W256.obj: ../modbus_regs.h
 FM25W256.obj: ../buffered_serial.h
 FM25W256.obj: ../buffered_serial_B.h
+FM25W256.obj: ../buffered_serial_D.h
 FM25W256.obj: ../MotionProfile.h
 FM25W256.obj: ../kinematics.h
 FM25W256.obj: ../motion_buffer.h
@@ -192,6 +193,7 @@ C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include/stddef.h:
 ../modbus_regs.h: 
 ../buffered_serial.h: 
 ../buffered_serial_B.h: 
+../buffered_serial_D.h: 
 ../MotionProfile.h: 
 ../kinematics.h: 
 ../motion_buffer.h: 

@@ -90,6 +90,7 @@ interrupt_handlers.obj: ../modbusRTU.h
 interrupt_handlers.obj: ../modbus_regs.h
 interrupt_handlers.obj: ../buffered_serial.h
 interrupt_handlers.obj: ../buffered_serial_B.h
+interrupt_handlers.obj: ../buffered_serial_D.h
 interrupt_handlers.obj: ../MotionProfile.h
 interrupt_handlers.obj: ../kinematics.h
 interrupt_handlers.obj: ../motion_buffer.h
@@ -192,6 +193,7 @@ C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include/stddef.h:
 ../modbus_regs.h: 
 ../buffered_serial.h: 
 ../buffered_serial_B.h: 
+../buffered_serial_D.h: 
 ../MotionProfile.h: 
 ../kinematics.h: 
 ../motion_buffer.h: 

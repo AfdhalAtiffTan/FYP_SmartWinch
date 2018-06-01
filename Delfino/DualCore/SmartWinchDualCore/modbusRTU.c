@@ -56,6 +56,11 @@
 //if defined, SCIA will be used
 unsigned char DEBUGGING;
 
+// used to automatically select active uart bus
+// 0: for lora on SCI-B
+// 1: for wifi on SCI-D
+unsigned char UART_Steering_flag = 0;
+
 //Private prototypes and vars
   unsigned char slave, addressed_slave; //address_slave is used to detect for broadcast message
   unsigned char modbusRTU_Written = 0;  
@@ -278,7 +283,13 @@ int send_reply(unsigned char *query, unsigned char string_length)
             if (DEBUGGING)
                 buffered_serial_write(query[i]);
             else 
-                buffered_serial_B_write(query[i]);
+            {
+                if (UART_Steering_flag == 0)
+                        buffered_serial_B_write(query[i]);
+                else
+                        buffered_serial_D_write(query[i]);
+            }
+                
         }
 
         //experimental
@@ -324,14 +335,31 @@ int receive_request(unsigned char *received_string)
         }
         else
         {
-                while (buffered_serial_B_available()) {
-                        //received_string[bytes_received] = Serial.read();
-                        received_string[bytes_received] = buffered_serial_B_read();
-                        //Serial.print(received_string[bytes_received], DEC);
-                        bytes_received++;
-                        if (bytes_received >= MAX_MESSAGE_LENGTH)
-                                return NO_REPLY; 	/* port error */
+                if (UART_Steering_flag == 0)
+                {
+                        while (buffered_serial_B_available()) 
+                        {
+                                //received_string[bytes_received] = Serial.read();
+                                received_string[bytes_received] = buffered_serial_B_read();
+                                //Serial.print(received_string[bytes_received], DEC);
+                                bytes_received++;
+                                if (bytes_received >= MAX_MESSAGE_LENGTH)
+                                        return NO_REPLY; 	/* port error */
+                        }
                 }
+                else
+                {
+                        while (buffered_serial_D_available()) 
+                        {
+                                //received_string[bytes_received] = Serial.read();
+                                received_string[bytes_received] = buffered_serial_D_read();
+                                //Serial.print(received_string[bytes_received], DEC);
+                                bytes_received++;
+                                if (bytes_received >= MAX_MESSAGE_LENGTH)
+                                        return NO_REPLY; 	/* port error */
+                        }
+                }
+                
         }
         
 
@@ -588,10 +616,111 @@ unsigned int regs_size)
         int exception;
         int length;
 
+        UART_Steering_flag = 0;
+
         if (DEBUGGING)
                 length = buffered_serial_available();
         else
                 length = buffered_serial_B_available();
+        
+
+        uint32_t now = systick();
+        static uint32_t Nowdt = 0;
+        static unsigned int lastBytesReceived;
+        
+        slave = slave_id;
+
+
+        if (length == 0) {
+                lastBytesReceived = 0;
+                return 0;
+        }
+
+        //if data is still streaming in
+        if (lastBytesReceived != length)
+        {
+            Nowdt = now + T35;
+            lastBytesReceived = length;
+            return 0;
+        }
+
+        if (now < Nowdt)
+                return 0;
+
+        lastBytesReceived = 0;
+
+        length = modbus_request(query);
+        if (length < 1) 
+                return length;
+         
+                exception = validate_request(query, length, regs_size);
+                if (exception) {
+                        build_error_packet( query[FUNC], exception,
+                        errpacket);
+                        send_reply(errpacket, EXCEPTION_SIZE);
+                        return (exception);
+                } 
+
+                        start_addr =
+                                ((int) query[START_H] << 8) +
+                                (int) query[START_L];
+
+        switch (query[FUNC]) {
+                case FC_READ_REGS:
+                {
+                        return read_holding_registers(
+                        start_addr,
+                        query[REGS_L],
+                        regs);
+                        //break;
+                }
+                case FC_WRITE_REGS:
+                {
+                    modbusRTU_Written = 1;
+                    
+                    char index = 0;
+                    for(index = 0; index < query[REGS_L]; index++)
+                    {
+                        //modbusRTU_written_register_flags |= 1<<(start_addr+index);
+                        modbusRTU_written_register_flags[start_addr+index] = 1;
+                    }
+                    
+                    return preset_multiple_registers(
+                    start_addr,
+                    query[REGS_L],
+                    query,
+                    regs);
+                    //break;
+                }
+                case FC_WRITE_REG:
+                {
+                    modbusRTU_Written = 1;
+                    
+                    //modbusRTU_written_register_flags |= 1<<(start_addr);
+                    modbusRTU_written_register_flags[start_addr] = 1;
+                    
+                    return write_single_register(start_addr, query, regs);
+                    //break;                                
+                }
+        }      
+        return 0;
+}
+
+int modbusRTU_Update_2(unsigned char slave_id, int *regs,
+unsigned int regs_size) 
+{
+        unsigned char query[MAX_MESSAGE_LENGTH];
+        unsigned char errpacket[EXCEPTION_SIZE + CHECKSUM_SIZE];
+        unsigned int start_addr;
+        int exception;
+        int length;
+
+        UART_Steering_flag = 1;
+
+        if (DEBUGGING)
+                length = buffered_serial_available();
+        else
+                length = buffered_serial_D_available();
         
 
         uint32_t now = systick();

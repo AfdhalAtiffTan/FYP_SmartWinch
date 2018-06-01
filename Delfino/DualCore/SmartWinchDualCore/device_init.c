@@ -365,6 +365,62 @@ void init_uart_C()
     Interrupt_register(INT_SCIC_TX, scicTXFIFOISR);
 }
 
+void init_uart_D()
+{
+    //SCI Rx pin.
+    GPIO_setMasterCore(DEVICE_GPIO_PIN_SCIRXDD, GPIO_CORE_CPU1);
+    GPIO_setPinConfig(DEVICE_GPIO_CFG_SCIRXDD);
+    GPIO_setDirectionMode(DEVICE_GPIO_PIN_SCIRXDD, GPIO_DIR_MODE_IN);
+    GPIO_setPadConfig(DEVICE_GPIO_PIN_SCIRXDD, GPIO_PIN_TYPE_PULLUP); 
+    GPIO_setQualificationMode(DEVICE_GPIO_PIN_SCIRXDD, GPIO_QUAL_ASYNC);
+	GPIO_writePin(DEVICE_GPIO_PIN_SCIRXDD, 1); //should enable pull-up
+
+    //SCI Tx pin.
+    GPIO_setMasterCore(DEVICE_GPIO_PIN_SCIRXDD, GPIO_CORE_CPU1);
+    GPIO_setPinConfig(DEVICE_GPIO_CFG_SCITXDD);
+    GPIO_setDirectionMode(DEVICE_GPIO_PIN_SCIRXDD, GPIO_DIR_MODE_OUT);
+    GPIO_setPadConfig(DEVICE_GPIO_PIN_SCIRXDD, GPIO_PIN_TYPE_STD); 
+    GPIO_setQualificationMode(DEVICE_GPIO_PIN_SCIRXDD, GPIO_QUAL_ASYNC);
+
+    // Initialize SCID and its FIFO.
+    SCI_performSoftwareReset(SCID_BASE);
+
+    // Configure SCID for echoback.
+    SCI_setConfig(SCID_BASE, DEVICE_LSPCLK_FREQ, 115200, (  SCI_CONFIG_WLEN_8 |
+                                                            SCI_CONFIG_STOP_ONE |
+                                                            SCI_CONFIG_PAR_NONE));
+    SCI_enableFIFO(SCID_BASE);
+    SCI_resetRxFIFO(SCID_BASE);
+    SCI_resetTxFIFO(SCID_BASE);
+
+    SCI_resetChannels(SCID_BASE);
+    SCI_clearInterruptStatus(SCID_BASE, SCI_INT_TXFF | SCI_INT_RXFF);
+    SCI_enableModule(SCID_BASE);
+    SCI_performSoftwareReset(SCID_BASE);
+
+    //
+    // RX and TX FIFO Interrupts Enabled
+    //
+    SCI_enableInterrupt(SCID_BASE, (SCI_INT_RXFF | SCI_INT_TXFF));
+    SCI_disableInterrupt(SCID_BASE, SCI_INT_RXERR);
+
+    SCI_setFIFOInterruptLevel(SCID_BASE, SCI_FIFO_TX0, SCI_FIFO_RX1);
+    SCI_performSoftwareReset(SCID_BASE);
+
+    Interrupt_enable(INT_SCID_RX);
+    //Interrupt_enable(INT_SCID_TX);
+
+	//spruhm8g.pdf page95	
+    Interrupt_clearACKGroup(INTERRUPT_ACK_GROUP8);
+
+    //
+    // Interrupts that are used in this example are re-mapped to
+    // ISR functions found within this file.
+    //
+    Interrupt_register(INT_SCID_RX, scidRXFIFOISR);
+    Interrupt_register(INT_SCID_TX, scidTXFIFOISR);
+}
+
 void init_eqep()
 {
     //set as eqep
@@ -724,19 +780,20 @@ void init_spi_B()
     //SIMO
     GPIO_setMasterCore(DEVICE_GPIO_PIN_SPISIMOB, GPIO_CORE_CPU1);
     GPIO_setPinConfig(DEVICE_GPIO_CFG_SPISIMOB);
-    GPIO_setPadConfig(DEVICE_GPIO_PIN_SPISIMOB, GPIO_PIN_TYPE_PULLUP);
+    GPIO_setPadConfig(DEVICE_GPIO_PIN_SPISIMOB, GPIO_PIN_TYPE_STD);
     GPIO_setQualificationMode(DEVICE_GPIO_PIN_SPISIMOB, GPIO_QUAL_ASYNC);
 
     //SPISTE
     GPIO_setMasterCore(DEVICE_GPIO_PIN_SPISTEB, GPIO_CORE_CPU1);
     GPIO_setPinConfig(DEVICE_GPIO_CFG_SPISTEB);
-    GPIO_setPadConfig(DEVICE_GPIO_PIN_SPISTEB, GPIO_PIN_TYPE_PULLUP);
+    GPIO_setPadConfig(DEVICE_GPIO_PIN_SPISTEB, GPIO_PIN_TYPE_STD);
     GPIO_setQualificationMode(DEVICE_GPIO_PIN_SPISTEB, GPIO_QUAL_ASYNC);
+    //GPIO_writePin(DEVICE_GPIO_PIN_SPISTEB, 1); //temporary fix
 
     //SPICLK
     GPIO_setMasterCore(DEVICE_GPIO_PIN_SPICLKB, GPIO_CORE_CPU1);
     GPIO_setPinConfig(DEVICE_GPIO_CFG_SPICLKB);
-    GPIO_setPadConfig(DEVICE_GPIO_PIN_SPICLKB, GPIO_PIN_TYPE_PULLUP);
+    GPIO_setPadConfig(DEVICE_GPIO_PIN_SPICLKB, GPIO_PIN_TYPE_STD);
     GPIO_setQualificationMode(DEVICE_GPIO_PIN_SPICLKB, GPIO_QUAL_ASYNC);    
     
     //
@@ -751,11 +808,12 @@ void init_spi_B()
     // FIFO and interrupt configuration
     //
     SPI_enableFIFO(SPIB_BASE);
+    //SPI_disableFIFO(SPIB_BASE);
     //SPI_clearInterruptStatus(SPIB_BASE, SPI_INT_TXFF);
     //SPI_setFIFOInterruptLevel(SPIB_BASE, SPI_FIFO_TX2, SPI_FIFO_RX2);
     //SPI_enableInterrupt(SPIB_BASE, SPI_INT_TXFF);
 
-    SPI_setSTESignalPolarity (SPIB_BASE, SPI_STE_ACTIVE_LOW);
+    //SPI_setSTESignalPolarity (SPIB_BASE, SPI_STE_ACTIVE_LOW);
     SPI_resetTxFIFO (SPIB_BASE);
     SPI_resetRxFIFO (SPIB_BASE);
 
@@ -840,11 +898,14 @@ void init_smartwinch()
     //
     Interrupt_initVectorTable();
 
+    DEVICE_DELAY_US(200000); //power up delay
+
     //self-explanatory
     init_gpio();
     init_uart_A(); //usb uart
-    init_uart_B(); //for lopy
+    init_uart_B(); //for lopy lora
     init_uart_C(); //for mcp266
+    init_uart_D(); //for lopy wifi
     init_eqep();
     init_pwm();
     init_adc();

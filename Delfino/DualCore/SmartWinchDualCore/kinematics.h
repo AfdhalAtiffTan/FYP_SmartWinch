@@ -36,7 +36,7 @@ typedef struct {
     unsigned int X,Y,Z;
 } XYZ_coord_struct_int;
 
-extern XYZ_coord_struct_int generated_path[1024]; // maximum distance between points is 1.024 meters
+extern XYZ_coord_struct_int generated_path[16]; // maximum distance between points is 1.024 meters
 extern unsigned int total_path_points;
 
 signed long brensenham3d(signed long x0, signed long y0, signed long z0, signed long x1, signed long y1, signed long z1);

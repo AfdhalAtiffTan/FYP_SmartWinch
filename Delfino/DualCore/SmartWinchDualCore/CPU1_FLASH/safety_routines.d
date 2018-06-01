@@ -90,6 +90,7 @@ safety_routines.obj: ../modbusRTU.h
 safety_routines.obj: ../modbus_regs.h
 safety_routines.obj: ../buffered_serial.h
 safety_routines.obj: ../buffered_serial_B.h
+safety_routines.obj: ../buffered_serial_D.h
 safety_routines.obj: ../MotionProfile.h
 safety_routines.obj: ../kinematics.h
 safety_routines.obj: ../motion_buffer.h
@@ -192,6 +193,7 @@ C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include/stddef.h:
 ../modbus_regs.h: 
 ../buffered_serial.h: 
 ../buffered_serial_B.h: 
+../buffered_serial_D.h: 
 ../MotionProfile.h: 
 ../kinematics.h: 
 ../motion_buffer.h: 

@@ -40,7 +40,7 @@ void motor_driving_with_safety_check()
         {
             static uint32_t overload_timer = 0;
             //if there is an overload condition, loosen the current cable lengths
-            if (modbus_holding_regs[overload_error])
+            if ((modbus_holding_regs[overload_error] != 0) && (modbus_holding_regs[load_cell_zero] == LOAD_CELL_ZEROED))
             {
                 modbus_holding_regs[Target_Setpoint] = modbus_holding_regs[Current_Encoder_Count] + 50;
                 if(systick() - overload_timer > 10000) //if overload condition is more than 2 seconds

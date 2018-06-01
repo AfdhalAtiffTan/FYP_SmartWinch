@@ -29,6 +29,7 @@
 
 #include "buffered_serial.h"
 #include "buffered_serial_B.h"
+#include "buffered_serial_D.h"
 
 #include "MotionProfile.h"
 #include "kinematics.h"

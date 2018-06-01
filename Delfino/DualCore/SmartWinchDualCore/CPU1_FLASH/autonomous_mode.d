@@ -90,6 +90,7 @@ autonomous_mode.obj: ../modbusRTU.h
 autonomous_mode.obj: ../modbus_regs.h
 autonomous_mode.obj: ../buffered_serial.h
 autonomous_mode.obj: ../buffered_serial_B.h
+autonomous_mode.obj: ../buffered_serial_D.h
 autonomous_mode.obj: ../MotionProfile.h
 autonomous_mode.obj: ../kinematics.h
 autonomous_mode.obj: ../motion_buffer.h
@@ -192,6 +193,7 @@ C:/ti/ccsv7/tools/compiler/ti-cgt-c2000_18.1.0.LTS/include/stddef.h:
 ../modbus_regs.h: 
 ../buffered_serial.h: 
 ../buffered_serial_B.h: 
+../buffered_serial_D.h: 
 ../MotionProfile.h: 
 ../kinematics.h: 
 ../motion_buffer.h: 

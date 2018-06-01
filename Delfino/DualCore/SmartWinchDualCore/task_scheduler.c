@@ -12,6 +12,23 @@ DIP_switch_t dip_switch; //global
 
 char homing_workaround = 1; //as a workaround to mcp266 glitch
 
+void delayed_zero_tether(bool *flag)
+{
+    
+    static uint32_t button_press_timestamp = 0;
+
+    if(!GPIO_readPin(DEVICE_GPIO_PIN_ZERO_TETHER)) //if button is pressed
+    {
+        if(systick() - button_press_timestamp > 15000 ) //if the button is pressed for more than 3 seconds
+        {
+            *flag = 1;
+            modbus_holding_regs[Current_Encoder_Count] = 0;
+        }
+    }
+    else
+        button_press_timestamp = systick();     
+}
+
 void homing_routine() //with mcp266 apis
 {
     static bool coordinate_changed = 0;
@@ -72,12 +89,8 @@ void homing_routine() //with mcp266 apis
     }
 
     //homing via zero switch
-    if(!GPIO_readPin(DEVICE_GPIO_PIN_ZERO_TETHER))
-    {
-        coordinate_changed = 1;
-        modbus_holding_regs[Current_Encoder_Count] = 0;
-    }
-
+    delayed_zero_tether(&coordinate_changed);
+    
     //homing via length
     if(modbusRTU_written_register_flags[Current_Encoder_Count] || coordinate_changed)
     {
@@ -515,8 +528,10 @@ void is_tether_close_to_target_length()
 //must read loadcell first before calling this function
 void zero_force_mode()
 {
+    uint32_t zf_button_is_pressed = GPIO_readPin(DEVICE_GPIO_PIN_ZERO_TETHER);
+
     //if load cell is zeroed and the zero_force switch is activated
-    if(modbus_holding_regs[load_cell_zero] == LOAD_CELL_ZEROED && !GPIO_readPin(DEVICE_GPIO_PIN_ZERO_FORCE))
+    if(modbus_holding_regs[load_cell_zero] == LOAD_CELL_ZEROED && zf_button_is_pressed)
     {
         if(modbus_holding_regs[load_cell_L] > 100) //if pulling force is higher than 100grams
         {
@@ -559,7 +574,7 @@ void underrun_error_check()
             
             previous_measured_cable_length = modbus_holding_regs[Current_Encoder_Count];
         }
-        else //check for motor is not powered
+        else //check for motor when not powered
         {
             if (modbus_holding_regs[Current_Encoder_Count] != previous_measured_cable_length) //if the cable moves
                 modbus_holding_regs[underrun_error] = 0; //clear flag
@@ -581,9 +596,8 @@ void task_scheduler_handler()
     read_mcp266_pids();
     read_load_cell();
     zero_force_mode();
-
-    if(modbus_holding_regs[interwinch_comms])
-        interwinch_comms_handler();
+    
+    interwinch_comms_handler();
     
     //simple_homing_routine();
     //fetch_current_rpm();

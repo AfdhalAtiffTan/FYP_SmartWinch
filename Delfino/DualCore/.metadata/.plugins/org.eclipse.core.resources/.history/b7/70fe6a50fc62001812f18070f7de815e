@@ -1,0 +1,164 @@
+//taken from https://os.mbed.com/components/Cypress-FM25W256-256Kb-Wide-Voltage-SPI-/
+//ported to C by Afdhal on 20th May 2018
+
+/* Cypress FM25W256 F-RAM component library
+ *
+ * Copyright (c) 2016 ARM Limited
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *  *
+ *  @author  Toyomasa Watarai
+ *  @version 1.0
+ *  @date    5-March-2016
+ *
+ *  http://www.cypress.com/products/nonvolatile-ram
+ *  http://www.cypress.com/documentation/datasheets/fm25w256-256-kbit-32-k-8-serial-spi-f-ram?source=search&keywords=FM25W256&cat=technical_documents
+ *
+ */
+
+#include "FM25W256.h"
+
+// FM25W256_FM25W256(PinName mosi, PinName miso, PinName clk, PinName cs)
+//     : _spi(mosi, miso, clk), _cs(cs)
+// {
+//     _spi.format(8, 0);
+//     _spi.frequency(FM25W256_CLK);
+//     while(SPI_isBusy (SPIB_BASE)); // _cs = 1;
+//     wait_ms(1); // tPU = 1ms (min.)
+// }
+
+// FM25W256_FM25W256(SPI &spi, PinName cs)
+//     : _spi(spi), _cs(cs) 
+// {
+//     _spi.format(8, 0);
+//     _spi.frequency(FM25W256_CLK);
+//     while(SPI_isBusy (SPIB_BASE)); // _cs = 1;
+//     wait_ms(1); // tPU = 1ms (min.)
+// }
+
+//this is needed because of ti's spi api
+uint16_t left_justified(uint16_t data)
+{
+    return data<<8;
+}
+
+//todo: add int version of read/write
+void FM25W256_write(uint16_t address, uint16_t data)
+{
+    SPI_resetRxFIFO (SPIB_BASE); 
+
+    GPIO_writePin(DEVICE_GPIO_PIN_SPISTEB, 0); // _cs = 0;
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(CMD_WREN));
+    while(SPI_isBusy (SPIB_BASE)); 
+    GPIO_writePin(DEVICE_GPIO_PIN_SPISTEB, 1); // _cs = 1;
+
+    DEVICE_DELAY_US(1);
+
+    SPI_resetRxFIFO (SPIB_BASE);
+
+    GPIO_writePin(DEVICE_GPIO_PIN_SPISTEB, 0); // _cs = 0;
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(CMD_WRITE));
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(address >> 8));
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(address & 0xFF));
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(data));
+    while(SPI_isBusy (SPIB_BASE));
+    GPIO_writePin(DEVICE_GPIO_PIN_SPISTEB, 1); // _cs = 1;
+}
+
+void FM25W256_write_multiple(uint16_t address, uint16_t *data, uint16_t size)
+{
+    SPI_resetRxFIFO (SPIB_BASE); // _cs = 0;
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(CMD_WREN));
+    while(SPI_isBusy (SPIB_BASE)); // _cs = 1;
+
+    SPI_resetRxFIFO (SPIB_BASE); // _cs = 0;
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(CMD_WRITE));
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(address >> 8));
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(address & 0xFF));
+    while(size--) {
+        SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(*data++));
+    }
+    while(SPI_isBusy (SPIB_BASE)); // _cs = 1;
+}
+
+uint16_t FM25W256_read(uint16_t address)
+{
+    uint16_t data;
+
+    SPI_resetRxFIFO (SPIB_BASE); // _cs = 0;
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(CMD_READ));
+    data = SPI_readDataBlockingFIFO(SPIB_BASE);
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(address >> 8));
+    data = SPI_readDataBlockingFIFO(SPIB_BASE);
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(address & 0xFF));
+    data = SPI_readDataBlockingFIFO(SPIB_BASE);
+    SPI_writeDataBlockingFIFO(SPIB_BASE, 0x00); //read first byte
+    data = SPI_readDataBlockingFIFO(SPIB_BASE);
+    while(SPI_isBusy (SPIB_BASE)); // _cs = 1;
+
+    DEVICE_DELAY_US(1);
+
+    return data;
+}
+
+void FM25W256_read_multiple(uint16_t address, uint16_t *buf, uint16_t size)
+{
+    SPI_resetRxFIFO (SPIB_BASE); // _cs = 0;
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(CMD_READ));
+    SPI_readDataBlockingFIFO(SPIB_BASE);
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(address >> 8));
+    SPI_readDataBlockingFIFO(SPIB_BASE);
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(address & 0xFF));
+    SPI_readDataBlockingFIFO(SPIB_BASE);
+
+    while (size--) {
+        SPI_writeDataBlockingFIFO(SPIB_BASE, 0x00);
+        *buf++ = SPI_readDataBlockingFIFO(SPIB_BASE);
+    }
+    while(SPI_isBusy (SPIB_BASE)); // _cs = 1;
+}
+
+void FM25W256_write_status(uint16_t data)
+{
+    SPI_resetRxFIFO (SPIB_BASE); // _cs = 0;
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(CMD_WREN));
+    while(SPI_isBusy (SPIB_BASE)); // _cs = 1;
+
+    SPI_resetRxFIFO (SPIB_BASE); // _cs = 0;
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(CMD_WRSR));
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(data));
+    while(SPI_isBusy (SPIB_BASE)); // _cs = 1;
+}
+
+uint16_t FM25W256_read_status()
+{
+    uint16_t data;
+    SPI_resetRxFIFO (SPIB_BASE); // _cs = 0;
+    SPI_writeDataBlockingFIFO(SPIB_BASE, left_justified(CMD_RDSR));
+    data = SPI_readDataBlockingFIFO(SPIB_BASE);
+    while(SPI_isBusy (SPIB_BASE)); // _cs = 1;
+
+    return data;
+}
+
+void FM25W256_set_write_protect(E_WP bp)
+{
+    // Set WPEN, BP0 and BP1
+    FM25W256_write_status((1 << 7) | (bp << 2));
+}
+
+void FM25W256_clear_write_protect()
+{
+    FM25W256_write_status(0);
+}
+    
